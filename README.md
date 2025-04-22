@@ -1,12 +1,49 @@
-# React + Vite
+#  Code Wallet
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Code Wallet** est une application desktop en cours de développement, réalisée avec **React** et **Electron**. Elle permettra à terme de sauvegarder, organiser et réutiliser des fragments de code.
 
-Currently, two official plugins are available:
+##  Avancement du projet
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Étapes déjà réalisées :
+- Initialisation du projet avec [Vite](https://vitejs.dev/) et [React](https://reactjs.org/)
+- Intégration d'[Electron](https://www.electronjs.org/) pour créer l'application desktop
+- Lancement avec double terminal (`npm run dev` + `npm run electron`)
+- Création du dépôt Git et premier commit
+- Upload du projet sur GitHub
 
-## Expanding the ESLint configuration
+### Prochaines étapes :
+- Ajouter le routeur et structurer les pages
+- Créer les composants de base (Header, FragmentCard...)
+- Mettre en place le style (TailwindCSS ou CSS modules)
+- Gérer le stockage local des fragments (lowdb ou node-json-db)
+- Ajouter les fonctionnalités (CRUD, modales, tags...)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+##  Structure actuelle
+
+```
+vite-project/
+├── src/
+│   └── App.jsx
+├── electron-main.cjs     # Fichier d'entrée Electron
+├── package.json
+├── .gitignore
+└── README.md
+```
+
+##  Lancer l’application
+
+**Terminal 1 :** pour lancer Vite (React)
+
+```bash
+npm run dev
+```
+
+**Terminal 2 :** pour lancer Electron
+
+```bash
+npm run electron
+```
+
+---
+
+ Projet réalisé dans le cadre d’un projet pédagogique — École Multimédia 2025
