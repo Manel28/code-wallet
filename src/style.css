@@ -20,35 +20,37 @@ h1 {
   font-size: 1.5rem;
   font-weight: 700;
 }
+nav a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    color: white;
+    margin-left: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  nav a:hover {
+    text-decoration: underline;
+  }
+  
+  nav a.new {
+    background-color: #9A48D0;
+    color: white;
+    border-radius: 5px;
+    padding: 0.4rem 1rem;
+    font-weight: 600;
+    margin-left: 1.5rem;
+    display: inline-block;
+    transition: background-color 0.3s;
+  }
+  
+  nav a.new:hover {
+    background-color: #B288C0;
+  }
+  
 
-nav button {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.9rem;
-  background: none;
-  color: #ffffff;
-  border: none;
-  margin-left: 1rem;
-  cursor: pointer;
-}
 
-nav button:hover {
-  text-decoration: underline;
-}
 
-nav button.new {
-  background-color: #9A48D0;
-  color: white;
-  border-radius: 5px;
-  padding: 0.4rem 1rem;
-  font-weight: 600;
-  margin-left: 1.5rem;
-  border: none;
-  transition: background-color 0.3s;
-}
-
-nav button.new:hover {
-  background-color: #B288C0;
-}
 
 main {
   padding: 2rem;
