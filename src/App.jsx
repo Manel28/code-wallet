@@ -1,7 +1,11 @@
+import Header from './components/Header';
+import './style.css'; // Ton CSS normal
+
 function App() {
   return (
-    <div className="text-3xl font-bold text-purple-600 p-4">
-      Hello Tailwind ✨
+    <div>
+      <Header />
+      
     </div>
   );
 }
