@@ -14,9 +14,11 @@ function App() {
     <main className="main">
       <Routes>
         <Route path="/" element={<Fragments />} />
+
         <Route path="/fragments" element={<Fragments />} />
         <Route path="/tags" element={<Tags />} />
         <Route path="/info" element={<Info />} />
+        
         <Route path="/new" element={<Form />} />
       </Routes>
     </main>
