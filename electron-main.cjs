@@ -4,7 +4,7 @@ const { LowSync, JSONFileSync } = require('lowdb');
 
 // base de donnees fragments.json
 const dbPath = path.join(app.getPath('userData'), 'fragments.json');
-console.log("💾 DB PATH utilisé :", dbPath);
+console.log(" DB PATH utilisé :", dbPath);
 
 const adapter = new JSONFileSync(dbPath);
 const db = new LowSync(adapter);
@@ -28,10 +28,16 @@ function createWindow() {
 
 app.whenReady().then(() => {
   createWindow();
+  ipcMain.handle('get-fragments', () => {
+    db.read();
+    return db.data.fragments;
+  });
 
   // Canal IPC pour ajouter un fragment
   ipcMain.on('add-fragment', (event, fragment) => {
-    console.log("📩 Fragment reçu :", fragment);
+
+    console.log("Fragment reçu :", fragment);
+    
     db.read();
     db.data.fragments.push({
       id: Date.now(),

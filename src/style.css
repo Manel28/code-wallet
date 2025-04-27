@@ -14,6 +14,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
 }
 
 h1 {
@@ -88,4 +89,112 @@ main {
     list-style: none;
     padding: 0;
   }
-    
+    /* PAGE FRAGMENTS */
+.fragments-page {
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.fragments-title {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  font-weight: bold;
+  color: #333;
+}
+
+.no-fragments {
+  text-align: center;
+  font-style: italic;
+  color: #666;
+}
+
+.fragments-list {
+  list-style: none;
+  padding: 0;
+}
+
+.fragment-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  transition: box-shadow 0.3s;
+}
+
+.fragment-card:hover {
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.fragment-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.fragment-tags {
+  color: #777;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.fragment-code {
+  background: #f9fafb;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.95rem;
+}
+
+.fragment-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+/* BOUTONS */
+.btn {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Voir */
+.btn-view {
+  background-color: #9A48D0; 
+  color: white;
+}
+.btn-view:hover {
+  background-color: #B288C0; 
+  transform: translateY(-2px);
+}
+
+/* Modifier */
+.btn-edit {
+  background-color: #7BC950;
+  color: white;
+}
+.btn-edit:hover {
+  background-color: #5ea73b; 
+  transform: translateY(-2px);
+}
+
+/* Supprimer */
+.btn-delete {
+  background-color: #333333; 
+  color: white;
+}
+.btn-delete:hover {
+  background-color: #000000; 
+  transform: translateY(-2px);
+}
