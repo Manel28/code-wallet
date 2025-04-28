@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-// ✅ Utilisation sécurisée
+//  Utilisation sécurisée
 const { sendFragment } = window.electronAPI || {};
 
 function Form() {
@@ -29,9 +29,9 @@ function Form() {
 
   return (
     <form onSubmit={handleSubmit} className="form">
-      <h2>Ajouter un nouveau fragment</h2>
+      <h2>Add a New Fragment</h2>
 
-      <label>Titre :</label>
+      <label>Title :</label>
       <input
         type="text"
         value={title}
@@ -39,7 +39,7 @@ function Form() {
         required
       />
 
-      <label>Tags (séparés par des virgules) :</label>
+      <label>Tags (separated by commas) :</label>
       <input
         type="text"
         value={tags}
@@ -54,7 +54,7 @@ function Form() {
         required
       ></textarea>
 
-      <button type="submit">Ajouter</button>
+      <button type="submit">	Add</button>
     </form>
   );
 }

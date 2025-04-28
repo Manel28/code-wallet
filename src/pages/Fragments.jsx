@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 
+
+
 function Fragments() {
   const [fragments, setFragments] = useState([]);
+  
+const [selectedFragment, setSelectedFragment] = useState(null);
 
   useEffect(() => {
     async function fetchFragments() {
@@ -11,13 +15,19 @@ function Fragments() {
 
     fetchFragments();
   }, []);
-
+  const handleCopyCode = () => {
+    if (selectedFragment) {
+      navigator.clipboard.writeText(selectedFragment.code)
+        .then(() => alert('Code copied to clipboard!'))
+        .catch((err) => console.error('	Error while copying', err));
+    }
+  };
   return (
     <div className="fragments-page">
-      <h2 className="fragments-title">Mes Fragments Sauvegardés</h2>
+      <h2 className="fragments-title">My Saved Fragments</h2>
 
       {fragments.length === 0 ? (
-        <p className="no-fragments">Aucun fragment pour l’instant.</p>
+        <p className="no-fragments">	No fragments yet.</p>
       ) : (
         <ul className="fragments-list">
           {fragments.map(fragment => (
@@ -30,14 +40,30 @@ function Fragments() {
               </pre>
 
               <div className="fragment-buttons">
-  <button className="btn btn-view">Voir</button>
-  <button className="btn btn-edit">Modifier</button>
-  <button className="btn btn-delete">Supprimer</button>
+              <button className="btn btn-view" onClick={() => setSelectedFragment(fragment)}>View</button>
+  <button className="btn btn-edit">Edit</button>
+  <button className="btn btn-delete">Delete</button>
 </div>
 
             </li>
           ))}
         </ul>
+      )}
+    
+      {/*  MODALE */}
+      {selectedFragment && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h2>{selectedFragment.title}</h2>
+            <p><strong>Tags :</strong> {selectedFragment.tags.join(', ')}</p>
+            <pre className="modal-code">{selectedFragment.code}</pre>
+
+            <div className="modal-buttons">
+              <button className="btn btn-copy" onClick={handleCopyCode}>📋 Copy</button>
+              <button className="btn btn-close" onClick={() => setSelectedFragment(null)}>Close</button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

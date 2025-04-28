@@ -197,4 +197,96 @@ main {
 .btn-delete:hover {
   background-color: #000000; 
   transform: translateY(-2px);
+} 
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+  animation: pop 0.3s ease;
+}
+
+.modal-code {
+  background: #f9fafb;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-top: 1rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.95rem;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.btn-copy {
+  background-color: #7BC950;
+  color: white;
+}
+
+.btn-copy:hover {
+  background-color: #65a73f;
+}
+
+.btn-close {
+  background-color: #9A48D0;
+  color: white;
+}
+
+.btn-close:hover {
+  background-color: #B288C0;
+}
+/* PAGE INFO */
+.info-page {
+  max-width: 700px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.info-page h1 {
+  font-size: 2.8rem;
+  color: #9A48D0;
+  margin-bottom: 1rem;
+}
+
+.info-page h2 {
+  font-size: 1.5rem;
+  color: #B288C0;
+  margin-bottom: 2rem;
+}
+
+.info-page p {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 1rem;
+  line-height: 1.6;
 }
