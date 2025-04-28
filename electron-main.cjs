@@ -45,6 +45,12 @@ app.whenReady().then(() => {
     });
     db.write();
   });
+  ipcMain.on('delete-fragment', (event, id) => {
+    db.read(); // Recharge la base
+    db.data.fragments = db.data.fragments.filter(fragment => fragment.id !== id); // Supprime
+    db.write(); // Sauvegarde
+  });
+  
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();

@@ -19,9 +19,20 @@ const [selectedFragment, setSelectedFragment] = useState(null);
     if (selectedFragment) {
       navigator.clipboard.writeText(selectedFragment.code)
         .then(() => alert('Code copied to clipboard!'))
-        .catch((err) => console.error('	Error while copying', err));
+        .catch((err) => console.error('Error while copying', err));
     }
   };
+  
+
+  
+  const handleDelete = (id) => {
+    if (window.confirm('Are you sure you want to delete this fragment?')) {
+      window.electronAPI.deleteFragment(id);
+      setFragments(prev => prev.filter(frag => frag.id !== id));
+    }
+  };
+  
+    
   return (
     <div className="fragments-page">
       <h2 className="fragments-title">My Saved Fragments</h2>
@@ -42,7 +53,13 @@ const [selectedFragment, setSelectedFragment] = useState(null);
               <div className="fragment-buttons">
               <button className="btn btn-view" onClick={() => setSelectedFragment(fragment)}>View</button>
   <button className="btn btn-edit">Edit</button>
-  <button className="btn btn-delete">Delete</button>
+  <button 
+  className="btn btn-delete"
+  onClick={() => handleDelete(fragment.id)}
+>
+  Delete
+</button>
+
 </div>
 
             </li>
