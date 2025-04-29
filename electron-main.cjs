@@ -50,6 +50,15 @@ app.whenReady().then(() => {
     db.data.fragments = db.data.fragments.filter(fragment => fragment.id !== id); // Supprime
     db.write(); // Sauvegarde
   });
+  ipcMain.on('edit-fragment', (event, fragment) => {
+    db.read();
+    const index = db.data.fragments.findIndex(frag => frag.id === fragment.id);
+    if (index !== -1) {
+      db.data.fragments[index] = fragment;
+      db.write();
+    }
+  });
+  
   
 
   app.on('activate', () => {

@@ -5,6 +5,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
   sendFragment: (fragment) => ipcRenderer.send('add-fragment', fragment),
   getFragments: () => ipcRenderer.invoke('get-fragments'),
   deleteFragment: (id) => ipcRenderer.send('delete-fragment', id),
+  editFragment: (fragment) => ipcRenderer.send('edit-fragment', fragment),
 
 });
 
