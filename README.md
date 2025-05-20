@@ -1,49 +1,78 @@
-#  Code Wallet
-
-**Code Wallet** est une application desktop en cours de développement, réalisée avec **React** et **Electron**. Elle permettra à terme de sauvegarder, organiser et réutiliser des fragments de code.
-
-##  Avancement du projet
-
-### Étapes déjà réalisées :
-- Initialisation du projet avec [Vite](https://vitejs.dev/) et [React](https://reactjs.org/)
-- Intégration d'[Electron](https://www.electronjs.org/) pour créer l'application desktop
-- Lancement avec double terminal (`npm run dev` + `npm run electron`)
-- Création du dépôt Git et premier commit
-- Upload du projet sur GitHub
-
-### Prochaines étapes :
-- Ajouter le routeur et structurer les pages
-- Créer les composants de base (Header, FragmentCard...)
-- Mettre en place le style (TailwindCSS ou CSS modules)
-- Gérer le stockage local des fragments (lowdb ou node-json-db)
-- Ajouter les fonctionnalités (CRUD, modales, tags...)
-
-##  Structure actuelle
-
-```
-vite-project/
-├── src/
-│   └── App.jsx
-├── electron-main.cjs     # Fichier d'entrée Electron
-├── package.json
-├── .gitignore
-└── README.md
-```
-
-##  Lancer l’application
-
-**Terminal 1 :** pour lancer Vite (React)
-
-```bash
-npm run dev
-```
-
-**Terminal 2 :** pour lancer Electron
-
-```bash
-npm run electron
-```
+# Code Wallet - Gestionnaire de fragments de code
 
 ---
 
- Projet réalisé dans le cadre d’un projet pédagogique — École Multimédia 2025
+##  Présentation
+
+Code Wallet est une application desktop développée avec **Electron**, **React**, et **Vite**, conçue pour aider les développeurs à stocker, organiser et retrouver facilement leurs fragments de code favoris.
+
+---
+
+##  Fonctionnalités
+
+### Gestion des fragments
+
+- Ajouter un fragment avec un **titre**, un **code source**, et des **tags** personnalisés.
+- Modifier un fragment existant.
+- Supprimer un fragment.
+- Visualiser le fragment dans une modale avec coloration syntaxique (Prism.js).
+
+### Recherche et filtrage
+
+- Recherche instantanée par **titre**, **contenu du code**, ou **tags**.
+- Filtrage par **tags** cliquables dans la liste et dans la modale.
+- Affichage de la liste des tags avec compteur du nombre de fragments associés.
+- Filtrage avancé pour afficher uniquement les fragments **favoris**.
+
+### Gestion des tags
+
+- Ajout de tags en saisissant dans le formulaire (avec gestion de tags multiples).
+- Edition et suppression globale des tags depuis la page Tags.
+- Les tags sont interactifs et permettent de filtrer les fragments correspondants.
+
+### Favoris
+
+- Marquer/démarquer un fragment comme favori.
+- Filtrer pour afficher uniquement les favoris.
+
+### Import / Export
+
+- Exporter l’ensemble des fragments dans un fichier JSON.
+- Importer un fichier JSON valide pour restaurer ou ajouter des fragments.
+- Synchronisation automatique des données importées dans la base locale JSON.
+
+### Dark Mode
+
+- Basculement clair/sombre via un bouton dans le header.
+- Styles adaptés pour toutes les pages, boutons, modales et fragments.
+- Coloration syntaxique adaptée en dark mode.
+
+### Tests unitaires
+
+- Couverture des fonctions de gestion des tags (`parseTags`, `filterFragmentsByTag`) avec Jest.
+- Test facile à lancer avec `npm test`.
+
+---
+
+##  Structure du projet
+
+vite-project/
+├── src/
+│ ├── components/
+│ │ └── Header.jsx # Barre de navigation 
+
+
+│ ├── pages/
+│ │ ├── Fragments.jsx # Liste des fragments + modales
+│ │ ├── Tags.jsx # Gestion des tags + édition/suppression
+│ │ ├── Form.jsx # Formulaire d’ajout de fragment
+│ │ └── Info.jsx # Page d’information (statique)
+│ ├── utils/
+│ │ ├── tagUtils.js # Fonctions utilitaires pour tags
+│ │ └── tagUtils.test.js # Tests unitaires pour tagUtils
+├── preload.js # Bridge Electron - React sécurisé
+├── electron-main.cjs # Processus principal Electron
+├── style.css # Styles globaux (dark mode inclus)
+├── package.json # Dépendances + scripts
+├── vite.config.js # Configuration Vite
+└── README.md # Ce fichier

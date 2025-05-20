@@ -58,6 +58,35 @@ app.whenReady().then(() => {
       db.write();
     }
   });
+  // Mettre à jour un tag dans tous les fragments
+ipcMain.on('edit-tag', (event, { oldName, newName }) => {
+  db.read();
+  db.data.fragments = db.data.fragments.map(fragment => {
+    return {
+      ...fragment,
+      tags: fragment.tags.map(tag => tag === oldName ? newName : tag)
+    };
+  });
+  db.write();
+});
+
+// Supprimer un tag de tous les fragments
+ipcMain.on('delete-tag', (event, tagToDelete) => {
+  db.read();
+  db.data.fragments = db.data.fragments.map(fragment => {
+    return {
+      ...fragment,
+      tags: fragment.tags.filter(tag => tag !== tagToDelete)
+    };
+  });
+  db.write();
+});
+ipcMain.on('import-fragments', (event, fragments) => {
+  db.read();
+  db.data.fragments = fragments;
+  db.write();
+});
+
   
   
 
