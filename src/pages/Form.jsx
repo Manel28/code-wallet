@@ -32,23 +32,34 @@ function Form() {
 
   // Gestion de la soumission du formulaire
   const handleSubmit = (e) => {
-    e.preventDefault(); // Empêche le reload de page
+  e.preventDefault();
 
-    // Création de l’objet fragment à envoyer à la base
-    const fragment = {
-      title,
-      tags,
-      code,
-    };
+  // Validations
+  if (title.trim().length < 2) {
+    alert('The title must be at least 2 characters long.');
+    return;
+  }
 
-    // Envoi via le bridge electron (préload.js)
-    if (window.electronAPI?.sendFragment) {
-      window.electronAPI.sendFragment(fragment);
-      navigate('/fragments'); // Redirige vers la liste des fragments
-    } else {
-      console.error('electronAPI non disponible');
-    }
+  if (code.trim().length < 5) {
+    alert('The code field is too short.');
+    return;
+  }
+
+  const fragment = {
+    title: title.trim(),
+    tags: tags, // Les tags sont déjà nettoyés dans mon tableau
+    code: code.trim()
   };
+
+  // Envoi via preload
+  if (window.electronAPI?.sendFragment) {
+    window.electronAPI.sendFragment(fragment);
+    navigate('/fragments');
+  } else {
+    console.error('electronAPI non disponible');
+  }
+};
+
 
   return (
     <form onSubmit={handleSubmit} className="form">
